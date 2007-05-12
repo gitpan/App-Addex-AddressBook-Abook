@@ -12,8 +12,8 @@ no_index:
     - inc
     - t
 requires: 
-  App::Addex: 0.003
-  Config::Tiny: 0
+  App::Addex: 0.007
+  Config::INI::Reader: 0.001
   File::HomeDir: 0
   File::Spec: 0
-version: 0.001
+version: 0.003

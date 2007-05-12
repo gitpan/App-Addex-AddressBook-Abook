@@ -5,7 +5,9 @@ use warnings;
 package App::Addex::AddressBook::Abook;
 use base qw(App::Addex::AddressBook);
 
-use Config::Tiny; # it's probably already loaded, but... -- rjbs, 2007-05-09
+use App::Addex::Entry::EmailAddress;
+
+use Config::INI::Reader; # probably already loaded, but... -- rjbs, 2007-05-09
 use File::HomeDir;
 use File::Spec;
 
@@ -15,13 +17,13 @@ App::Addex::AddressBook::Abook - use the "abook" program as the addex source
 
 =head1 VERSION
 
-version 0.001
+version 0.003
 
-  $Id: /my/cs/projects/App-Addex-AddressBook-Abook/trunk/lib/App/Addex/AddressBook/Abook.pm 31562 2007-05-10T03:11:44.344580Z rjbs  $
+  $Id: /my/cs/projects/App-Addex-AddressBook-Abook/trunk/lib/App/Addex/AddressBook/Abook.pm 31640 2007-05-12T02:06:19.696879Z rjbs  $
 
 =cut
 
-our $VERSION = '0.001';
+our $VERSION = '0.003';
 
 =head1 SYNOPSIS
 
@@ -49,8 +51,8 @@ sub new {
     'addressbook',
   );
 
-  Carp::croak "couldn't read abook address book file" unless
-    $self->{config} = Config::Tiny->read($arg->{filename});
+  eval { $self->{config} = Config::INI::Reader->read_file($arg->{filename}); };
+  Carp::croak "couldn't read abook address book file: $@" if $@;
 
   $self->{$_} = $arg->{$_} for qw(sig_field folder_field);
 
@@ -60,7 +62,9 @@ sub new {
 sub _entrify {
   my ($self, $person) = @_;
 
-  return unless my @emails = split /\s*,\s*/, ($person->{email}||'');
+  return unless my @emails =
+    map { App::Addex::Entry::EmailAddress->new($_) }
+    split /\s*,\s*/, ($person->{email}||'');
 
   my %field;
   $field{ $_ } = $person->{ $self->{"$_\_field"} } for qw(sig folder);
