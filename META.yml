@@ -1,20 +1,25 @@
---- 
-author: 
-  - Ricardo Signes <rjbs@cpan.org>
+---
+abstract: "use the \"abook\" program as the addex source"
+author:
+  - 'Ricardo SIGNES, C<< <rjbs@cpan.org> >>'
 distribution_type: module
-generated_by: Module::Install version 0.68
+generated_by: 'Module::Install version 0.77'
 license: perl
-meta-spec: 
-  url: http://module-build.sourceforge.net/META-spec-v1.3.html
-  version: 1.3
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+module_name: App::Addex::AddressBook::Abook
 name: App-Addex-AddressBook-Abook
-no_index: 
-  directory: 
+no_index:
+  directory:
     - inc
     - t
-requires: 
+requires:
   App::Addex: 0.007
   Config::INI::Reader: 0.011
   File::HomeDir: 0
   File::Spec: 0
-version: 0.004
+resources:
+  license: http://dev.perl.org/licenses/
+  repository: http://github.com/rjbs/app-addex-addressbook-abook
+version: 0.005
