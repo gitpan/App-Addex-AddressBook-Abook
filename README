@@ -1,2 +1,13 @@
-This is the README for App-Addex-AddressBook-Abook.  It uses your abook address
-book to produce config for various unixy mail tools.
+
+
+This archive contains the distribution App-Addex-AddressBook-Abook,
+version 0.007:
+
+  use the "abook" program as the addex source
+
+This software is copyright (c) 2006 by Ricardo SIGNES.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+
