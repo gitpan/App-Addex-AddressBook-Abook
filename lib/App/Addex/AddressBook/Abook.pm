@@ -4,7 +4,7 @@ use warnings;
 
 package App::Addex::AddressBook::Abook;
 {
-  $App::Addex::AddressBook::Abook::VERSION = '0.007';
+  $App::Addex::AddressBook::Abook::VERSION = '0.008';
 }
 use base qw(App::Addex::AddressBook);
 # ABSTRACT: use the "abook" program as the addex source
@@ -92,7 +92,7 @@ App::Addex::AddressBook::Abook - use the "abook" program as the addex source
 
 =head1 VERSION
 
-version 0.007
+version 0.008
 
 =head1 SYNOPSIS
 
